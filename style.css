@@ -1,0 +1,211 @@
+/* ===== BASE ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #05060a;
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+
+/* ===== GRID BACKGROUND ===== */
+.grid-bg {
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(#0f172a 1px, transparent 1px),
+              linear-gradient(90deg, #0f172a 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: moveGrid 20s linear infinite;
+  opacity: 0.15;
+  z-index: -2;
+}
+
+@keyframes moveGrid {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(-60px,-60px); }
+}
+
+/* ===== CURSOR GLOW ===== */
+.cursor-glow {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #38bdf8, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+/* ===== NAV ===== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  background: rgba(2, 6, 23, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+.logo span {
+  color: #38bdf8;
+  text-shadow: 0 0 10px #38bdf8;
+}
+
+/* ===== HERO ===== */
+#hero {
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero-title {
+  font-size: 42px;
+  background: linear-gradient(90deg, #38bdf8, #9333ea);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: glowText 3s infinite alternate;
+}
+
+@keyframes glowText {
+  from { filter: drop-shadow(0 0 5px #38bdf8); }
+  to { filter: drop-shadow(0 0 20px #9333ea); }
+}
+
+.sub {
+  opacity: 0.7;
+}
+
+/* ===== GLASS ===== */
+.glass {
+  margin: 40px auto;
+  width: 80%;
+  padding: 30px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(56,189,248,0.2);
+}
+
+/* ===== PROJECT TITLE ===== */
+.projects-title {
+  text-align: center;
+  font-size: 34px;
+  margin: 40px 0;
+  color: white;
+  transition: 0.3s;
+}
+
+/* ===== PROJECT CARDS ===== */
+.project-card {
+  background: rgba(2,6,23,0.85);
+  padding: 20px;
+  margin: 20px auto;
+  width: 60%;
+  border-radius: 15px;
+  border: 1px solid rgba(56,189,248,0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s;
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 25px #38bdf8;
+}
+
+/* light sweep */
+.project-card::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background: rgba(255,255,255,0.1);
+  transform: skewX(-20deg);
+  left: -150px;
+  transition: 0.6s;
+}
+
+.project-card:hover::before {
+  left: 120%;
+}
+
+/* ===== BLOG LINKS ===== */
+.blog-link {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.blog-link:hover {
+  color: #9333ea;
+  text-shadow: 0 0 10px #9333ea;
+}
+
+/* ===== TOUCH GLOW ===== */
+@keyframes touchGlow {
+  0% { color: orange; text-shadow: 0 0 10px orange; }
+  50% { color: red; text-shadow: 0 0 20px red; }
+  100% { color: purple; text-shadow: 0 0 25px purple; }
+}
+
+.projects-title.active-glow {
+  animation: touchGlow 1.2s ease-in-out;
+}
+
+/* ===== FADE IN ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== BOOT SCREEN ===== */
+#boot-screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: #00ff9f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* ===== TERMINAL ===== */
+.terminal {
+  color: #00ff9f;
+  font-family: monospace;
+  font-size: 14px;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  text-shadow: 0 0 5px #00ff9f;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  from { opacity: 0.9; }
+  to { opacity: 1; }
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 30px;
+  opacity: 0.5;
+}
